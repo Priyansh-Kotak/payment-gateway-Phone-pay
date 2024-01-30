@@ -4,9 +4,6 @@ const { createHash } = require("crypto");
 
 require("dotenv").config();
 
-const checkhello = (req, res) => {
-  res.send("<h1>Users</h1>");
-}
 
 const newPayment = async (req, res) => {
   try {
@@ -170,7 +167,6 @@ const checkStatus = async (req, res) => {
   }
 };
 module.exports = {
-  checkhello,
   newPayment,
   checkStatus,
 };

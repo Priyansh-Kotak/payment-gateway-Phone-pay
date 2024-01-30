@@ -5,7 +5,6 @@ const {
 const express = require("express");
 const router = express();
 
-router.get("/", checkhello);
 router.post("/payment", newPayment);
 router.post("/status/:txnId", checkStatus);
 
