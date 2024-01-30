@@ -57,10 +57,10 @@
   "engines": {
     "node":"18.x"
   },
-  "name": "travel-website",
+  "name": "valsco-payment",
   "version": "1.0.0",
   "main": "server.js",
-  "author": "waleed shaikh",
+  "author": "Lakshay",
   "license": "ISC",
   "description": ""
 }
