@@ -55,7 +55,7 @@
     "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "engines": {
-    "node":"14.x"
+    "node":"20.x"
   },
   "name": "travel-website",
   "version": "1.0.0",
