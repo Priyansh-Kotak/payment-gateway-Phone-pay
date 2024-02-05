@@ -6,16 +6,17 @@ require("dotenv").config();
 
 const newPayment = async (req, res) => {
   try {
+    const { amount, number } = req.body;
     const transactionid = "Tr-" + uuidv4().toString(36).slice(-6);
     const payload = {
       merchantId: process.env.MERCHANT_ID,
       merchantTransactionId: transactionid,
       merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
-      amount: 450000,
+      amount: amount * 100,
       redirectUrl: `http://localhost:5000/api/status/${transactionid}`,
       redirectMode: "POST",
       callbackUrl: `http://localhost:3000/api/status/${transactionid}`,
-      mobileNumber: "9999999999",
+      mobileNumber: `${number}`,
       paymentInstrument: {
         type: "PAY_PAGE",
       },
