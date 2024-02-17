@@ -4,6 +4,7 @@ const { createHash } = require("crypto");
 
 require("dotenv").config();
 
+
 const newPayment = async (req, res) => {
   try {
     const { amount, number } = req.body;
