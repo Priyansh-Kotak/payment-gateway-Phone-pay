@@ -58,7 +58,7 @@ const newPayment = async (req, res) => {
     // axios.
 
     const redirectUrl = response.data.data.instrumentResponse.redirectInfo.url;
-    console.log(redirectUrl);
+    // console.log(redirectUrl);
 
     res.status(200).send({ redirectUrl });
 
