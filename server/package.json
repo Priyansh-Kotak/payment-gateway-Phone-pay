@@ -54,10 +54,13 @@
     "client": "npm start --prefix ./client",
     "dev": "concurrently \"npm start\" \"npm run client\""
   },
-  "name": "travel-website",
+  "engines": {
+    "node":"18.x"
+  },
+  "name": "valsco-payment",
   "version": "1.0.0",
   "main": "server.js",
-  "author": "waleed shaikh",
+  "author": "Lakshay",
   "license": "ISC",
   "description": ""
 }

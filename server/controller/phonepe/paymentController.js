@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
 const { createHash } = require("crypto");
+const { log } = require("console");
 
 require("dotenv").config();
 
@@ -14,6 +15,7 @@ const newPayment = async (req, res) => {
       merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
       amount: amount * 100,
       redirectUrl: `http://localhost:5000/api/status/${transactionid}`,
+      // redirectUrl: `http://localhost:5000/`,
       redirectMode: "POST",
       callbackUrl: `http://localhost:3000/api/status/${transactionid}`,
       mobileNumber: `${number}`,
@@ -32,7 +34,7 @@ const newPayment = async (req, res) => {
     const checksum = dataSha256 + "###" + 1;
 
     const UAT_PAY_API_URL =
-      "https://api.phonepe.com/apis/hermes";
+      "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
 
     const response = await axios.post(
       UAT_PAY_API_URL,
@@ -48,8 +50,20 @@ const newPayment = async (req, res) => {
       }
     );
 
-    const redirect = response.data.data.instrumentResponse.redirectInfo.url;
-    res.redirect(redirect);
+    // axios.request(response).then(function (response) {
+    //   return res
+    //     .status(200)
+    //     .send(response.data.data.instrumentResponse.redirectInfo.url);
+    // });
+    // axios.
+
+    const redirectUrl = response.data.data.instrumentResponse.redirectInfo.url;
+    console.log(redirectUrl);
+
+    res.status(200).send({ redirectUrl });
+
+    // const redirect = response.data.data.instrumentResponse.redirectInfo.url;
+    // res.redirect(redirect);
   } catch (error) {
     res.status(500).send({
       message: error.message,
